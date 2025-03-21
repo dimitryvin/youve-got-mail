@@ -1,0 +1,23 @@
+services:
+  mail-notification:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mail-notification
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3333}:3333"
+    environment:
+      - PORT=3333
+      - EMAIL_FROM=${EMAIL_FROM:?EMAIL_FROM is required}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD:?EMAIL_PASSWORD is required}
+      - EMAIL_TO=${EMAIL_TO:?EMAIL_TO is required}
+      - SMTP_HOST=${SMTP_HOST:?SMTP_HOST is required}
+      - SMTP_PORT=${SMTP_PORT:?SMTP_PORT is required}
+      - TZ=America/Los_Angeles
+    networks:
+      - mail-network
+
+networks:
+  mail-network:
+    driver: bridge
