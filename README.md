@@ -1,6 +1,8 @@
-# Mail Notification Server
+# Mail Notification Project
 
-A simple server that sends email notifications when mail is delivered to your physical mailbox.
+Project that details how one would receive notifications for their mail getting delivered.
+
+# Server
 
 ## Setup
 
